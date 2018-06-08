@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	
+    <session-factory>
+    	<property name="connection.username">root</property>
+    	<property name="connection.password">root</property>
+    	<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    	<property name="connection.url">jdbc:mysql://localhost:3306/hibernate?useUnicode=true&amp;characterEncoding=UTF-8</property>
+    	
+    	<!-- dialect方言，用于配制生成针对哪个数据库的SQL语句 --><!-- 方言类，Hibernate提供的，用于封装某种特定的数据库方言 -->
+		<!-- <property name="dialect">org.hibernate.dialect.OracleDialect</property>	 -->			
+    	<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+    	
+    	<property name="show_sql">true</property>
+    	<property name="format_sql">false</property>
+    	<property name="default_schema">hibernate</property>		<!-- 默认的数据库 -->
+        <property name="hbm2ddl.auto">update</property>						<!-- Update等操作详见doc -->
+        
+        <!-- 用的是本地事务，即jdbc事务，所以是thread，只有在使用getCurrentSession()方法获得session对象时才在此处配置 -->
+        <property name="hibernate.current_session_context_class">thread</property>	
+        
+        <mapping resource="Grade.hbm.xml"/>
+        <mapping resource="Student.hbm.xml"/>
+        <mapping resource="User.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd" 
+        default-init-method="defautInit" default-destroy-method="defaultDestroy"> 	<!-- xml全局配置 -->
+        
+        <!--生命周期 
+        	定义：在spring bean的xml文件中配置的ID以及class
+			初始化：当IOC容器【即UnitTestBase中context在start启动时加载xml文件的bean并初始化生成实例】
+			使用：在单元测试中取出bean的实例并调用它的方法
+			销毁：UnitTestBase中context.destroy()方法销毁创建的所有实例 -->
+        
+        
+        <!-- 在xml文件中配置init-method/destroy-method初始化和销毁方法 ， IOC容器加载bean的时候会调用这两个方法 -->
+        <bean id="beanLifeCycle" class="com.imooc.a4xml.lifecycle.BeanLifeCycle"  init-method="start" destroy-method="stop"></bean>
+	
+ </beans>

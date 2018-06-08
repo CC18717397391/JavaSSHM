@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+		<!-- 
+			name:实体类
+			table：表名
+		 -->
+	<class name="com.clear.hibernate.entity.Emp" table="emp">
+		 
+		 <!-- 允许缓存当前对象 -->
+		 <cache usage="read-only"/>
+		 
+		<id name="id" type="integer" column="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name="name" type="string" column="name"/>
+		<property name="age" type="integer" column="age"/>
+		<property name="salary" type="double" column="salary"/>
+		<property name="marry" type="yes_no" column="marry"/>
+		<property name="birthday" type="date" column="birthday"/>
+		<property name="lastLoginTime" type="timestamp" column="lastLoginTime"/>
+	
+	</class>
+
+</hibernate-mapping>

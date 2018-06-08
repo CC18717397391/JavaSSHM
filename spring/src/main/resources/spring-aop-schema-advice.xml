@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+<!-- 所有基于配置文件的 aop:aspect切面只支持singleton单例模式-->
+
+	<bean id="moocAspect" class="com.imooc.aop.schema.advice.MoocAspect"></bean>
+	<!-- 切面类，包含众多调用来切入业务的方法 -->
+	
+	<bean id="aspectBiz" class="com.imooc.aop.schema.advice.biz.AspectBiz"></bean>
+	<!-- bean，包含业务执行的方法 -->
+	
+	<aop:config>
+		<aop:aspect id="moocAspectAOP" ref="moocAspect">	
+			<!-- aspect切面的id,	ref:引用上面定义的一个bean作为	切面类 -->
+		
+			<aop:pointcut expression="execution(* com.imooc.aop.schema.advice.biz.*Biz.*(..))" id="moocPiontcut"/>
+					<!-- 声明业务类的方法或者类【切入点：用来被切入】，此处表达式：包下所有以Biz结尾的类的所有方法 都要被切入【即调用切面类中的方法，具体调用哪个，看下方定义】 ， id为标识供下方直接引用-->
+			
+			<aop:before method="before" pointcut-ref="moocPiontcut"/>
+					<!-- advise前置通知:在执行业务方法之前切入   method指用来切入的方法 ，该方法是切面类中的方法 ；   ref指向上面已经声明的切入点 -->
+			<!-- <aop:before method="before" pointcut="execution(* com.imooc.aop.schema.advice.biz.*Biz.*(..))"/> -->
+					<!-- 通知的两种声明方式，第一种必须在最上方声明切入点【即被切入的类】，第二种即被注释的方式，内部指向切入点 ；当都指向一个切入点的时候，用第一种:在通知中直接ref切入点的id；当指向不同的切入点的时候用第二种-->
+							
+			<aop:after-returning method="afterReturning" pointcut-ref="moocPiontcut"/>
+					<!-- 返回后通知： 还可以包含一个属性 returning="retVal"指定返回值类型 -->
+			<aop:after-throwing method="afterThrowing" pointcut-ref="moocPiontcut"/>
+					<!-- 抛出异常后通知：用来处理抛异常的方法，只有出异常才会切入执行 -->
+			<aop:after method="after" pointcut-ref="moocPiontcut"/>
+					<!-- 后通知：等同于finally，在方法返回之后执行，是方法返回后的最后一条代码，一定会执行 -->
+			<aop:around method="around" pointcut-ref="moocPiontcut"/>
+					<!-- 环绕通知，定义方法的第一个参数必须是ProceedingJoinPoint类型；当有配置around时，after和after-returning的执行顺序和它们在xml文件中配置顺序相反。 -->
+			<aop:around method="aroundInit" pointcut="execution(* com.imooc.aop.schema.advice.biz.AspectBiz.init(String, int)) 
+			 							and args(bizName, times)"/>
+			 		<!-- 测试环绕通知的带参切入，此处环绕通知是单独指向业务方法 --> 
+
+			<aop:declare-parents types-matching="com.imooc.aop.schema.advice.biz.*(+)" 
+						implement-interface="com.imooc.aop.schema.advice.Fit"
+						default-impl="com.imooc.aop.schema.advice.FitImpl"/>
+				<!-- 属于简介的一种advice，允许在本切面声明一个实现指定接口的advise通知对象【玛德就是在本切面添加一个类，一个实现了某个接口的类】
+					types-matching：匹配什么样的类型  ；implement-interface：具体使用哪一个接口 ；default-impl：接口实现类
+					types-matching匹配到指定的类之后，会为该类继承一个新的父类，下面是父类的接口和实现，然后就可以调用-->
+							
+		</aop:aspect>
+	</aop:config>
+
+ </beans>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-20 4:16:47 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.clear.hibernate.entity.User" table="User">
+       
+        <id name="sid" type="int" column="SID">			<!-- id标签，映射表的主键 -->
+        	<!-- <column name="SID"></column> -->		<!-- 写在上面和这里都可以，映射表的字段 -->		
+            <generator class="native" />				<!-- 定义为主键,由数据库负责自动生成，起始值为1，无需赋值自动增加，手动赋值也不起作用 -->
+           <!--  <generator class="nativeassigned" /> -->		<!-- 定义为主键,由java负责生成，需要创建对象时手动赋值，int默认值为0 -->	
+        </id>
+        <property name="sname" type="java.lang.String">
+            <column name="SNAME" />
+        </property>
+        <property name="gender" type="java.lang.String">
+            <column name="GENDER" />
+        </property>
+        <property name="birthday" type="date">	<!-- 具体类型根据需要详见比较对应表，一般使用hibernate类型 ,此处为java类型就暂不做修改-->
+            <column name="BIRTHDAY" />
+        </property>
+        <component name="address" class="com.clear.hibernate.entity.Address">			<!-- 组件属性：实体类中的某个属性属于用户自定义的类的对象 -->
+        	<property name="postcode" column="POSTCODE"/>
+        	<property name="phone" column="PHONE"/>
+        	<property name="address" column="ADDRESS"/>
+        </component>
+        <property name="picture" type="java.sql.Blob">
+            <column name="PICTURE" />
+        </property>
+    </class>
+</hibernate-mapping>

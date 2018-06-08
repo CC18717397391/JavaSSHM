@@ -1,0 +1,9 @@
+#jdbc:oracle:thin:@localhost:1521:orcl
+#oracle.jdbc.OracleDriver
+#org.hibernate.dialect.OracleDialect
+#
+#get方法在调用之后会先去缓存区查询，如果不存在会直接去数据库发出SQL语句进行查询，返回持久化对象
+#访问数据库时，Hibernate会优先向缓存区去查找要访问的数据，如果缓存区存在数据，则直接返回，不存在会向数据库查询，返回数据同时把该数据放到缓存区。
+#session.evict(obj):将obj从缓存移除
+#session.clear():移除缓存中所有对象
+#
