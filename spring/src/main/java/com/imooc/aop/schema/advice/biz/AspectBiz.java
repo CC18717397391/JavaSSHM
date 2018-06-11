@@ -4,7 +4,6 @@ package com.imooc.aop.schema.advice.biz;
 /**
  * 业务类，用来测试advice
  * @author ClearC
- *
  */
 public class AspectBiz {
 	

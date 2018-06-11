@@ -15,21 +15,21 @@ public class TestAOPSchemaAdvice extends UnitTestBase {
 		super("classpath:spring-aop-schema-advice.xml");
 	}
 	
-	@Test
+	//@Test
 	public void testBiz() {
 		AspectBiz biz = super.getBean("aspectBiz");
 		biz.biz();
 	}
 	
 	//测试环绕通知的带参切入
-	@Test
+	//@Test
 	public void testInit() {
 		AspectBiz biz = super.getBean("aspectBiz");
 		biz.init("moocService", 3);
 	}
 	
 	//测试Introductions，属于简介的一种advice
-	@Test
+	//@Test
 	public void testFit() {
 		Fit fit = (Fit)super.getBean("aspectBiz");
 		fit.filter();
