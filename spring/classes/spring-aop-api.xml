@@ -59,7 +59,7 @@
 		</property>
 		<property name="target">
 			<bean class="com.imooc.aop.api.BizLogicImpl"></bean>
-			<ref bean="bizLogicImplTarget"/>
+			<!--  <ref bean="bizLogicImplTarget"/> -->
 		</property>
 		<property name="interceptorNames">
 			<list>

@@ -17,10 +17,10 @@ public class TestAOPSchemaAdvisors extends UnitTestBase {
 	@Test
 	public void testSave() {
 		InvokeService service = super.getBean("invokeService");
-		service.invoke();
+		service.invoke();			//测试环绕通知
 		
 		System.out.println();
-		service.invokeException();
+		service.invokeException();	
  	}
 
 }

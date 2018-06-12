@@ -7,7 +7,6 @@ import org.springframework.dao.PessimisticLockingFailureException;
 /**
  * 切面bean,用来测试advicsors
  * @author ClearC
- *
  */
 
 public class ConcurrentOperationExecutor implements Ordered {

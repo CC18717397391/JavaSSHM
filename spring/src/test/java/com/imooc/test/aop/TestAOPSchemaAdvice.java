@@ -29,7 +29,7 @@ public class TestAOPSchemaAdvice extends UnitTestBase {
 	}
 	
 	//测试Introductions，属于简介的一种advice
-	//@Test
+	@Test
 	public void testFit() {
 		Fit fit = (Fit)super.getBean("aspectBiz");
 		fit.filter();

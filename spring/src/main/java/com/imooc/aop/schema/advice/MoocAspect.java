@@ -17,6 +17,7 @@ public class MoocAspect {
 		System.out.println("MoocAspect afterReturning.");
 	}
 	
+	// 当抛出异常后，方法没有办法正常返回，所以afterReturning失效
 	public void afterThrowing() {
 		System.out.println("MoocAspect afterThrowing.");
 	}
@@ -25,6 +26,7 @@ public class MoocAspect {
 		System.out.println("MoocAspect after.");
 	}
 	
+	//定义方法的第一个参数必须是ProceedingJoinPoint类型
 	public Object around(ProceedingJoinPoint pjp) {
 		Object obj = null;
 		try {
