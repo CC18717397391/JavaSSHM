@@ -1,4 +1,3 @@
-创建数据表account 
 CREATE TABLE `account` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,

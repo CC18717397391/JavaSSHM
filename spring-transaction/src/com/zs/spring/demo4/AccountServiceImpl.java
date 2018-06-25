@@ -7,11 +7,12 @@ import org.springframework.transaction.annotation.Transactional;
  *@Transactional中的的属性
  *propagation	:事务的传播行为
  *isolation		:事务的隔离级别
- *readOnly		:只读
+ *readOnly		:只读事务（不可以进行对数据库的修改操作）
  *rollbackFor	:发生哪些异常回滚
  *noRollbackFor	:发生哪些异常不回滚
  *rollbackForClassName 根据异常类名回滚
  */
+//@Transactional(Alt + /填写属性，逗号分隔)
 @Transactional
 public class AccountServiceImpl implements AccountService {
 	
