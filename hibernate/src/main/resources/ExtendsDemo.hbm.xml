@@ -4,7 +4,7 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 	<joined-subclass name="com.chinasofti.entity.Book" table="book" 
-								extends="com.chinasofti.entity.Product">
+								extends="com.clear.entity.Product">
 		<key column="id"></key>
 		<property name="author" type="string" column="author"></property>
 		<property name="publisher" type="string" column="publisher"></property>
