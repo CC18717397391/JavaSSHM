@@ -3,18 +3,18 @@ package com.imooc.mvcdemo.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-//¸æËßDispatcherServletÏà¹ØµÄÈİÆ÷£¬ ÕâÊÇÒ»¸öController£¬ ¹ÜÀíºÃÕâ¸öbeanÅ¶
+//å‘Šè¯‰DispatcherServletç›¸å…³çš„å®¹å™¨ï¼Œ è¿™æ˜¯ä¸€ä¸ªControllerï¼Œ ç®¡ç†å¥½è¿™ä¸ªbeanå“¦
 @Controller
-//Àà¼¶±ğµÄRequestMapping£¬¸æËßDispatcherServletÓÉÕâ¸öÀà¸ºÔğ´¦ÀíÒÔ¸úURL¡£
-//HandlerMappingÒÀ¿¿Õâ¸ö±êÇ©À´¹¤×÷
+//ç±»çº§åˆ«çš„RequestMappingï¼Œå‘Šè¯‰DispatcherServletç”±è¿™ä¸ªç±»è´Ÿè´£å¤„ç†ä»¥è·ŸURLã€‚
+//HandlerMappingä¾é è¿™ä¸ªæ ‡ç­¾æ¥å·¥ä½œ
 @RequestMapping("/hello")
 public class HelloMvcController {
 	
-	//·½·¨¼¶±ğµÄRequestMapping£¬ ÏŞÖÆ²¢ËõĞ¡ÁËURLÂ·¾¶Æ¥Åä£¬Í¬Àà¼¶±ğµÄ±êÇ©Ğ­Í¬¹¤×÷£¬×îÖÕÈ·¶¨À¹½Øµ½µÄURLÓÉÄÇ¸ö·½·¨´¦Àí
+	//æ–¹æ³•çº§åˆ«çš„RequestMappingï¼Œ é™åˆ¶å¹¶ç¼©å°äº†URLè·¯å¾„åŒ¹é…ï¼ŒåŒç±»çº§åˆ«çš„æ ‡ç­¾ååŒå·¥ä½œï¼Œæœ€ç»ˆç¡®å®šæ‹¦æˆªåˆ°çš„URLç”±é‚£ä¸ªæ–¹æ³•å¤„ç†
 	@RequestMapping("/mvc")
 	public String helloMvc() {
 		
-		//ÊÓÍ¼äÖÈ¾£¬/WEB-INF/jsps/home.jsp
+		//è§†å›¾æ¸²æŸ“ï¼Œ/WEB-INF/jsps/home.jsp
 		return "home";
 	}
 
