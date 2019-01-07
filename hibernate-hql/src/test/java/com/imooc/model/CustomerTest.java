@@ -1,16 +1,15 @@
 package com.imooc.model;
 
 
-import java.util.List;
-import java.util.Map;
-
+import com.imooc.util.HibernateSessionFactory;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.imooc.util.HibernateSessionFactory;
+import java.util.List;
+import java.util.Map;
 
 
 /**
